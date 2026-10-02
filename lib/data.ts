@@ -183,7 +183,7 @@ export const projects: Project[] = [
       "Generative AI",
     ],
     github: "https://github.com/vadalasathwik",
-    demo: "https://github.com/vadalasathwik",
+    demo: "https://www.fasthire99.com/",
     preview: "hire",
     size: "sm",
     caseStudy: [
@@ -220,7 +220,7 @@ export const projects: Project[] = [
       "ChartJS / Recharts",
     ],
     github: "https://github.com/vadalasathwik",
-    demo: "https://github.com/vadalasathwik",
+    demo: "https://www.fasttrade99.com/",
     preview: "trade",
     size: "sm",
     caseStudy: [
