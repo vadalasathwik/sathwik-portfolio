@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background-color: #080c14;
+    color-scheme: dark;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    @apply bg-ink font-sans text-fg antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: rgba(56, 189, 248, 0.25);
+    color: #f8fafc;
+  }
+  :focus-visible {
+    outline: 2px solid #38bdf8;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+  .dot-grid {
+    background-image: radial-gradient(rgba(248, 250, 252, 0.08) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .gradient-glow {
+    background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.15), transparent 70%);
+  }
+  .glass-card {
+    @apply bg-surface/70 backdrop-blur-md border border-line/80 shadow-lg transition-all duration-300 hover:border-accent/40 hover:shadow-accent/5;
+  }
+}
