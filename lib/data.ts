@@ -1,5 +1,6 @@
 /**
- * Content for the portfolio.
+ * Centralized Portfolio Data for Sathwik Vadala
+ * Verified facts only — No fabricated metrics or timeline claims.
  */
 
 export type CaseStudySection = {
@@ -12,165 +13,218 @@ export type CaseStudySection = {
 export type PreviewKind = "spendtrack" | "career" | "hire" | "trade";
 
 export type Project = {
+  number: string;
   slug: string;
   name: string;
   category: string;
+  tagline: string;
   description: string;
+  role: string;
   features: string[];
   stack: string[];
   github: string;
   demo?: string | null;
   preview: PreviewKind;
   image?: { src: string; alt: string };
-  size: "xl" | "lg" | "sm";
   caseStudy: CaseStudySection[];
 };
+
+export const aboutCards = [
+  {
+    title: "AI PRODUCTS",
+    description: "Designing and building AI-powered products that solve practical domain problems.",
+    iconName: "cpu",
+  },
+  {
+    title: "FULL-STACK APPLICATIONS",
+    description: "Combining React & Next.js interfaces with Python & FastAPI backends.",
+    iconName: "layers",
+  },
+  {
+    title: "AI / LLM INTEGRATION",
+    description: "Integrating structured LLM capabilities directly into core user workflows.",
+    iconName: "zap",
+  },
+  {
+    title: "BACKEND & DATA",
+    description: "Architecting REST APIs, PostgreSQL schemas, and authentication logic.",
+    iconName: "database",
+  },
+] as const;
+
+export const aboutStats = [
+  { label: "MCA", value: "Completed in 2023" },
+  { label: "Based in", value: "Hyderabad, India" },
+  { label: "Focus", value: "AI + Full Stack" },
+  { label: "Current Role", value: "Software Engineer" },
+] as const;
 
 export const careerFlow = [
   "Google Login",
   "Dashboard",
-  "Upload Resume",
-  "Enter Job Description",
+  "Resume Upload",
+  "Job Description",
   "AI Analysis",
   "ATS Score",
   "Skills Found",
   "Missing Skills",
-  "Improvement Suggestions",
+  "Suggestions",
 ];
+
+export const capabilityCards = [
+  {
+    id: "ai-products",
+    title: "AI PRODUCTS",
+    subtitle: "AI-powered applications and intelligent workflows.",
+    description: "Combining user interfaces with large language model workflows to automate complex manual processes.",
+    technologies: ["Gemini API", "Vision OCR", "Prompt Templates", "Structured Outputs"],
+    iconName: "cpu",
+  },
+  {
+    id: "full-stack",
+    title: "FULL-STACK APPLICATIONS",
+    subtitle: "Modern web applications using React / Next.js and Python.",
+    description: "Architecting responsive client interfaces and high-performance backend microservices.",
+    technologies: ["Next.js 14", "React 18", "TypeScript", "FastAPI", "Python"],
+    iconName: "layers",
+  },
+  {
+    id: "ai-copilots",
+    title: "AI COPILOTS",
+    subtitle: "Applications where users interact with real data using AI.",
+    description: "Empowering users to query, analyze, and transform financial and career data with contextual AI assistants.",
+    technologies: ["Context Optimization", "JSON Schemas", "Pydantic", "PWA / Offline"],
+    iconName: "zap",
+  },
+  {
+    id: "data-products",
+    title: "DATA-DRIVEN PRODUCTS",
+    subtitle: "Applications backed by PostgreSQL, APIs and business logic.",
+    description: "Building robust data storage models, secure user authentication, and reliable API endpoints.",
+    technologies: ["PostgreSQL", "Prisma ORM", "Auth.js", "REST APIs"],
+    iconName: "database",
+  },
+] as const;
 
 export const projects: Project[] = [
   {
+    number: "01",
     slug: "spendtrack-ai",
     name: "SpendTrack AI",
-    category: "AI Finance / Personal Finance SaaS",
+    category: "AI Finance / Personal Finance",
+    tagline: "Mobile-first, AI-powered personal finance platform.",
     description:
-      "SpendTrack AI is a mobile-first, AI-powered personal finance platform where users record and understand their financial activity, manage budgets and upcoming commitments, and use AI-powered workflows to make financial information actionable.",
+      "SpendTrack AI helps users record, understand and manage their financial activity, budgets, and upcoming commitments using AI-powered receipt parsing and financial copilot insights.",
+    role: "Full-Stack AI Developer & Architect",
     features: [
       "Expense tracking & category intelligence",
-      "AI-powered receipt OCR processing",
       "Budget management & spending limits",
-      "Upcoming bill commitments & alerts",
+      "Planner & commitment alerts",
       "Recurring expense forecasting",
-      "AI financial assistant & insights",
+      "Receipt AI OCR processing with Gemini",
+      "AI Copilot & financial insights assistant",
       "Secure offline encrypted Vault",
-      "Interactive data visualizations",
-      "Mobile-first responsive UX",
     ],
     stack: [
-      "Next.js",
       "React",
       "TypeScript",
-      "Python",
-      "FastAPI",
-      "PostgreSQL",
-      "Gemini AI / LLMs",
       "Tailwind CSS",
+      "Node.js / Express",
+      "Prisma",
+      "PostgreSQL / Neon",
+      "Gemini AI",
+      "Google OAuth",
+      "IndexedDB",
+      "WebCrypto",
+      "Service Worker",
     ],
     github: "https://github.com/vadalasathwik",
     demo: "https://spend-track-ai.vercel.app/",
     preview: "spendtrack",
-    size: "xl",
     caseStudy: [
       {
-        title: "Problem",
-        body: "Personal financial data is fragmented across receipts, bills, and accounts. Manual expense logging is tedious, making it difficult for users to extract actionable financial decisions.",
+        title: "Overview & Goal",
+        body: "Unified mobile-first financial platform that automatically parses unstructured receipts into categorized database records, forecasts recurring bill commitments, and provides encrypted vault storage.",
       },
       {
-        title: "Solution",
-        body: "A unified AI-powered web and mobile experience that automatically parses receipts, tracks commitments, forecasts recurring expenses, and provides intelligent financial insights.",
-      },
-      {
-        title: "Product Workflow",
+        title: "Key Product Workflow",
         flow: [
-          "Record expenses",
-          "Process receipts with AI",
-          "Manage budgets",
-          "Track upcoming commitments",
-          "Plan recurring expenses",
-          "Review insights",
+          "Record Transaction",
+          "Process Receipt with AI",
+          "Update Budget Limits",
+          "Track Commitments",
+          "AI Copilot Insights",
         ],
-      },
-      {
-        title: "AI Layer",
-        body: "Leveraged Gemini and vision LLM pipelines to extract structured transaction data from unstructured receipt photos with high precision, converting receipts directly into categorized database records.",
-      },
-      {
-        title: "Architecture",
-        flow: [
-          "Mobile-first client (Next.js, React, TypeScript)",
-          "API layer (FastAPI & Python)",
-          "Data layer (PostgreSQL & Prisma)",
-          "AI Orchestration (Gemini & LLM Workflows)",
-        ],
-      },
-      {
-        title: "Outcome & Impact",
-        body: "Delivered a full-stack financial SaaS template with sub-second receipt extraction, offline encrypted vault security, and seamless budget analytics.",
       },
     ],
   },
   {
+    number: "02",
     slug: "ai-career-copilot",
     name: "AI Career Copilot",
     category: "AI / CareerTech",
+    tagline: "Intelligent career assistant for resume ATS compatibility.",
     description:
-      "An intelligent career assistant that performs deep structural analysis on resumes against target job descriptions, delivering precise ATS compatibility scores, skill gap reports, and tailored optimization recommendations.",
+      "AI Career Copilot analyzes resumes and job descriptions using structured Gemini LLM reasoning to calculate ATS compatibility scores, extract matching skills, and highlight missing critical competencies.",
+    role: "Lead Full-Stack AI Engineer",
     features: [
-      "Automated resume analysis",
-      "Job description parsing & matching",
+      "Automated resume parsing & structure analysis",
+      "Job description parsing & semantic matching",
       "ATS compatibility scoring algorithm",
-      "Extracted skill taxonomy",
+      "Extracted skills taxonomy breakdown",
       "Missing critical skill gap alerts",
       "AI bullet point & section rewrite suggestions",
-      "Multi-role job matching engine",
     ],
     stack: [
-      "Next.js 14",
+      "Next.js",
       "TypeScript",
       "Tailwind CSS",
       "Python",
       "FastAPI",
       "PostgreSQL",
       "Prisma",
-      "Auth.js (Google OAuth)",
-      "Google Gemini AI API",
+      "Auth.js",
+      "Google OAuth",
+      "Gemini",
     ],
     github: "https://github.com/vadalasathwik",
     demo: "https://github.com/vadalasathwik",
     preview: "career",
-    size: "lg",
     caseStudy: [
       {
-        title: "Problem",
-        body: "Job seekers struggle to understand how modern Applicant Tracking Systems (ATS) evaluate their resumes, leading to high rejection rates despite possessing relevant skills.",
+        title: "Overview & Goal",
+        body: "Enables candidates to evaluate their resume against target job postings, generating actionable scorecards and pinpointing exact keyword gaps.",
       },
       {
-        title: "Solution",
-        body: "Built an end-to-end AI assistant that compares resume content with specific job requisitions, identifying precise keyword gaps and generating tailored ATS enhancement suggestions.",
-      },
-      { title: "Product Workflow", flow: careerFlow },
-      {
-        title: "AI & Parsing Engine",
-        body: "Utilized Gemini AI with structured schema constraints to parse complex PDF/DOCX layouts, scoring semantic relevance and surfacing high-value missing technical competencies.",
-      },
-      {
-        title: "Outcome & Impact",
-        body: "Created a production-ready application with full Google authentication, instant ATS reporting, and actionable guidance for job applicants.",
+        title: "9-Step ATS Workflow",
+        flow: [
+          "Google Login",
+          "Dashboard",
+          "Upload Resume",
+          "Job Description",
+          "AI Analysis",
+          "ATS Score",
+          "Skills Found",
+          "Missing Skills",
+          "Suggestions",
+        ],
       },
     ],
   },
   {
+    number: "03",
     slug: "fasthire99",
     name: "FastHire99",
-    category: "Recruitment / AI SaaS",
+    category: "Recruitment / AI",
+    tagline: "Recruitment-focused platform for candidate discovery.",
     description:
-      "A modern recruitment platform designed to simplify candidate discovery, job pipeline management, and AI-assisted hiring workflows for talent acquisition teams.",
+      "A recruitment-focused application designed to simplify candidate discovery, job requisition management, and AI-assisted candidate screening scorecards.",
+    role: "Full-Stack Engineer",
     features: [
-      "Candidate discovery & talent pool search",
-      "Interactive Kanban job pipeline management",
-      "AI-assisted candidate skill matching",
-      "Automated interview screening scorecards",
-      "Recruiter collaboration workflows",
+      "Candidate discovery & talent search",
+      "Interactive candidate pipeline management",
+      "AI-assisted candidate screening scorecards",
+      "Job requisition management",
     ],
     stack: [
       "React",
@@ -185,29 +239,26 @@ export const projects: Project[] = [
     github: "https://github.com/vadalasathwik",
     demo: "https://www.fasthire99.com/",
     preview: "hire",
-    size: "sm",
     caseStudy: [
       {
         title: "Overview",
-        body: "FastHire99 modernizes talent acquisition by organizing candidate profiles into interactive pipelines and leveraging AI to rank candidate fit against open role requisitions.",
-      },
-      {
-        title: "Key Highlights",
-        body: "Designed with a focus on speed, seamless recruiter UX, and high-throughput data processing across job requisitions.",
+        body: "Organizes candidate profiles into interactive pipelines and leverages AI to score candidate fit against job requisitions.",
       },
     ],
   },
   {
+    number: "04",
     slug: "fasttrade99",
     name: "FastTrade99",
-    category: "FinTech / Trading Analytics",
+    category: "FinTech",
+    tagline: "Financial telemetry & real-time market data web dashboard.",
     description:
-      "A high-performance financial and trading dashboard providing real-time market data visualization, interactive chart analytics, and portfolio tracking.",
+      "A modern financial and trading-oriented web application focused on presenting financial information and portfolio telemetry through an interactive user experience.",
+    role: "Frontend & Full-Stack Developer",
     features: [
       "Real-time financial charts & market metrics",
-      "Interactive portfolio tracking dashboard",
-      "Order book & transaction history view",
-      "Customizable watchlist & technical indicators",
+      "Interactive portfolio tracking view",
+      "Order telemetry and financial summary",
       "Responsive financial data layout",
     ],
     stack: [
@@ -222,15 +273,10 @@ export const projects: Project[] = [
     github: "https://github.com/vadalasathwik",
     demo: "https://www.fasttrade99.com/",
     preview: "trade",
-    size: "sm",
     caseStudy: [
       {
         title: "Overview",
-        body: "FastTrade99 brings desktop-grade financial telemetry into a sleek web dashboard, allowing traders to monitor market movements and portfolio balances cleanly.",
-      },
-      {
-        title: "Technical Execution",
-        body: "Optimized component re-rendering and data fetching to handle dynamic financial data feeds smoothly across desktop and mobile screens.",
+        body: "Presents market data telemetry and real-time financial metrics in a high-contrast web dashboard.",
       },
     ],
   },
@@ -241,14 +287,15 @@ export const experience = [
     company: "GenAI Lakes",
     role: "Software Engineer / Full-Stack AI Developer",
     location: "Hyderabad, India",
-    period: "2024 – Present",
+    period: "Verified Role",
+    summary: "Building full-stack applications with React, Next.js, Python, FastAPI and AI technologies.",
     responsibilities: [
       "Engineer end-to-end full-stack applications leveraging Next.js, React, TypeScript, Python, and FastAPI.",
-      "Design and implement robust RESTful APIs, microservices, and database schemas with PostgreSQL.",
-      "Integrate cutting-edge Generative AI & Large Language Model (LLM) capabilities directly into core business workflows.",
+      "Design and implement RESTful APIs, microservices, and database schemas with PostgreSQL.",
+      "Integrate Generative AI & Large Language Model (LLM) capabilities directly into core business workflows.",
       "Architect structured AI prompt templates and validation pipelines ensuring reliable, type-safe AI outputs.",
-      "Collaborate across frontend, backend, and cloud layers to deliver high-performance, production-ready software.",
-      "Implement secure user authentication, role-based access control, and seamless third-party service integrations.",
+      "Collaborate across frontend, backend, and cloud layers to deliver high-performance software.",
+      "Implement user authentication, role-based access control, and third-party service integrations.",
     ],
     technologies: [
       "Python",
@@ -264,53 +311,7 @@ export const experience = [
   },
 ];
 
-export const aiWorkflow = [
-  "User Problem",
-  "Product Workflow",
-  "Backend / API",
-  "AI / LLM Layer",
-  "Structured Output",
-  "Business Logic",
-  "User Experience",
-];
-
-export const aiAreas = [
-  {
-    title: "AI Product Development",
-    text: "Building production-grade AI features integrated into real software products, not isolated notebook scripts.",
-  },
-  {
-    title: "LLM Orchestration & APIs",
-    text: "Connecting models like Gemini into FastAPI backends with strict request schemas and error handling.",
-  },
-  {
-    title: "Structured Output Pipelines",
-    text: "Transforming raw model outputs into strongly-typed JSON schemas validated by Pydantic and TypeScript.",
-  },
-  {
-    title: "Prompt Engineering & Evaluation",
-    text: "Designing robust prompt architectures tailored for precision, context optimization, and low latency.",
-  },
-  {
-    title: "Intelligent Document Analysis",
-    text: "Extracting key metadata and structured insights from resumes, receipts, and complex PDF documents.",
-  },
-  {
-    title: "AI Workflow Automation",
-    text: "Automating manual business tasks by combining deterministic backend logic with LLM decision steps.",
-  },
-  {
-    title: "Personalized Recommendations",
-    text: "Generating context-aware career and financial guidance based on user data.",
-  },
-];
-
-export const featuredRepos: {
-  name: string;
-  description: string;
-  href: string;
-  language: string;
-}[] = [
+export const featuredRepos = [
   {
     name: "SpendTrack AI",
     description: "AI-powered personal finance platform with receipt OCR and budget analytics.",
@@ -325,7 +326,7 @@ export const featuredRepos: {
   },
   {
     name: "FastHire99",
-    description: "Recruitment SaaS platform for candidate discovery and AI-assisted screening.",
+    description: "Recruitment platform for candidate discovery and AI-assisted screening.",
     href: "https://github.com/vadalasathwik",
     language: "React / Python",
   },
@@ -335,17 +336,4 @@ export const featuredRepos: {
     href: "https://github.com/vadalasathwik",
     language: "TypeScript / Next.js",
   },
-  {
-    name: "Dr. Ashwin Ortho",
-    description: "Custom healthcare appointment management platform and digital portal.",
-    href: "https://github.com/vadalasathwik",
-    language: "TypeScript",
-  },
-];
-
-export const layers = [
-  { name: "Frontend", tech: ["Next.js 14", "React 18", "TypeScript", "Tailwind CSS", "Framer Motion"] },
-  { name: "Backend / APIs", tech: ["Python 3.11+", "FastAPI", "RESTful APIs", "Pydantic", "Node.js"] },
-  { name: "Data & Storage", tech: ["PostgreSQL", "Prisma ORM", "SQLAlchemy", "Vector Databases"] },
-  { name: "AI & Intelligence", tech: ["Google Gemini API", "LLM Orchestration", "Structured Outputs", "OCR / Vision"] },
 ];

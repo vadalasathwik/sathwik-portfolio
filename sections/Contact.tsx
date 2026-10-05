@@ -4,13 +4,13 @@ import { useState } from "react";
 import { FiCheck, FiCopy, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Reveal } from "@/components/ui/Reveal";
+import { siteConfig } from "@/lib/config";
 
 export function Contact() {
   const [copied, setCopied] = useState(false);
-  const emailStr = "sathwik.vdl@gmail.com";
 
   const copyEmail = () => {
-    navigator.clipboard.writeText(emailStr);
+    navigator.clipboard.writeText(siteConfig.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -19,40 +19,61 @@ export function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="scroll-mt-16 border-t border-line/60 py-20 md:py-32"
+      className="scroll-mt-16 border-t border-line/60 py-20 md:py-28"
     >
       <div className="container-page">
         <Reveal>
-          <div className="rounded-3xl border border-line bg-surface/60 p-8 md:p-12 backdrop-blur-md relative overflow-hidden">
+          <div className="relative overflow-hidden rounded-3xl border border-line/80 bg-surface/60 p-8 sm:p-12 backdrop-blur-md">
             <div
               aria-hidden
               className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/10 blur-3xl"
             />
 
-            <span className="rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1 text-xs font-mono text-accent">
+            <span className="inline-block rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1 font-mono text-xs font-semibold text-accent">
               Get In Touch
             </span>
 
             <h2
               id="contact-title"
-              className="mt-4 max-w-3xl font-display text-[clamp(2.2rem,5vw,4rem)] font-bold leading-[1.05] tracking-tight text-fg"
+              className="mt-4 max-w-3xl font-display text-3xl sm:text-5xl font-bold tracking-tight text-fg leading-tight"
             >
-              Let&apos;s build intelligent software together.
+              Let&apos;s build something intelligent.
             </h2>
+
             <p className="mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-muted">
-              I am actively looking for opportunities in <span className="font-semibold text-fg">Full-Stack AI Engineering, Python & FastAPI Development, and AI Product Engineering</span>. Whether you have a position open or a project to discuss, feel free to reach out.
+              I&apos;m open to opportunities involving AI engineering, full-stack development, and AI-powered product development.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <ButtonLink href={`mailto:${emailStr}`}>
+              <ButtonLink href={`mailto:${siteConfig.email}`}>
                 <FiMail aria-hidden className="h-4 w-4" />
-                Email Me Directly
+                Email Me
               </ButtonLink>
+
+              <a
+                href={siteConfig.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-line/80 bg-raised/80 px-4 py-3 text-xs sm:text-sm font-semibold text-fg transition-all hover:border-accent/40 hover:bg-raised hover:text-accent"
+              >
+                <FiLinkedin className="h-4 w-4 text-accent" />
+                LinkedIn
+              </a>
+
+              <a
+                href={siteConfig.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-line/80 bg-raised/80 px-4 py-3 text-xs sm:text-sm font-semibold text-fg transition-all hover:border-accent/40 hover:bg-raised hover:text-accent"
+              >
+                <FiGithub className="h-4 w-4 text-accent" />
+                GitHub
+              </a>
 
               <button
                 type="button"
                 onClick={copyEmail}
-                className="inline-flex items-center gap-2 rounded-xl border border-line bg-raised/80 px-4 py-3 text-sm font-semibold text-fg hover:border-accent/50 hover:bg-raised transition-all duration-200"
+                className="inline-flex items-center gap-2 rounded-xl border border-line/80 bg-ink/50 px-4 py-3 text-xs sm:text-sm font-semibold text-fg transition-all hover:border-accent/40"
               >
                 {copied ? (
                   <>
@@ -62,32 +83,10 @@ export function Contact() {
                 ) : (
                   <>
                     <FiCopy className="h-4 w-4 text-muted" />
-                    <span>Copy Email ({emailStr})</span>
+                    <span>Copy Email ({siteConfig.email})</span>
                   </>
                 )}
               </button>
-            </div>
-
-            <div className="mt-10 flex flex-wrap gap-4 pt-8 border-t border-line/60">
-              <a
-                href="https://www.linkedin.com/in/sathwikvadala/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 rounded-xl border border-line bg-ink/50 px-5 py-3 text-sm font-semibold text-fg hover:border-accent/40 hover:text-accent transition-colors"
-              >
-                <FiLinkedin className="h-5 w-5 text-accent" />
-                <span>LinkedIn / sathwikvadala</span>
-              </a>
-
-              <a
-                href="https://github.com/vadalasathwik"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 rounded-xl border border-line bg-ink/50 px-5 py-3 text-sm font-semibold text-fg hover:border-accent/40 hover:text-accent transition-colors"
-              >
-                <FiGithub className="h-5 w-5 text-accent" />
-                <span>GitHub / vadalasathwik</span>
-              </a>
             </div>
           </div>
         </Reveal>

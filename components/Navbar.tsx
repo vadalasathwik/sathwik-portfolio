@@ -23,7 +23,7 @@ export function Navbar() {
       (entries) => {
         entries.forEach((e) => e.isIntersecting && setActive(e.target.id));
       },
-      { rootMargin: "-45% 0px -50% 0px" },
+      { rootMargin: "-45% 0px -50% 0px" }
     );
     ids.forEach((id) => {
       const el = document.getElementById(id);
@@ -41,25 +41,27 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+      className={`fixed inset-x-0 top-0 z-40 border-b transition-all duration-300 ${
         scrolled || open
-          ? "border-line bg-ink/80 backdrop-blur-md"
-          : "border-transparent bg-transparent"
+          ? "border-line/40 bg-ink/85 backdrop-blur-md shadow-md py-0"
+          : "border-transparent bg-ink/40 backdrop-blur-sm py-1"
       }`}
     >
-      <nav aria-label="Primary" className="container-page flex h-16 items-center justify-between">
-        <a href="#top" className="font-display text-lg font-semibold tracking-tight">
-          {siteConfig.name}
+      <nav aria-label="Primary" className="container-page flex h-14 sm:h-16 items-center justify-between transition-all duration-300">
+        <a href="#top" className="group flex items-center gap-2.5">
+          <span className="font-display text-base sm:text-lg font-bold tracking-tight text-fg transition-colors group-hover:text-accent">
+            {siteConfig.name}
+          </span>
         </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-6 lg:gap-8 md:flex">
           {navLinks.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
                 aria-current={active === l.href.slice(1) ? "true" : undefined}
-                className={`text-sm transition-colors hover:text-fg ${
-                  active === l.href.slice(1) ? "text-fg" : "text-muted"
+                className={`text-xs sm:text-sm font-medium transition-colors hover:text-fg ${
+                  active === l.href.slice(1) ? "text-accent font-semibold" : "text-muted"
                 }`}
               >
                 {l.label}
@@ -72,19 +74,20 @@ export function Navbar() {
           <a
             href={siteConfig.resumePath}
             download
-            className="hidden rounded-md border border-line px-4 py-2 text-sm font-medium transition-colors hover:border-muted hover:bg-raised md:inline-flex"
+            className="hidden rounded-full border border-line/80 bg-surface/60 px-4 py-1.5 text-xs font-semibold text-fg transition-all hover:border-accent/50 hover:bg-raised hover:text-accent md:inline-flex"
           >
             Resume
           </a>
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-line md:hidden"
+            className="inline-flex items-center gap-1.5 rounded-full border border-line/80 bg-surface/70 px-3 py-1.5 text-xs font-semibold text-fg hover:border-accent/50 md:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? <FiX aria-hidden className="h-5 w-5" /> : <FiMenu aria-hidden className="h-5 w-5" />}
+            <span>{open ? "Close" : "Menu"}</span>
+            {open ? <FiX aria-hidden className="h-4 w-4" /> : <FiMenu aria-hidden className="h-4 w-4" />}
           </button>
         </div>
       </nav>
@@ -93,31 +96,31 @@ export function Navbar() {
         {open ? (
           <motion.div
             id="mobile-menu"
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="border-t border-line md:hidden"
+            className="border-t border-line/60 bg-ink/95 backdrop-blur-xl md:hidden"
           >
-            <ul className="container-page flex flex-col py-4">
+            <ul className="container-page flex flex-col py-4 gap-1">
               {navLinks.map((l) => (
                 <li key={l.href}>
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block py-3 font-display text-2xl font-medium"
+                    className="block py-2 font-display text-base font-medium text-fg hover:text-accent transition-colors"
                   >
                     {l.label}
                   </a>
                 </li>
               ))}
-              <li className="pt-3">
+              <li className="pt-3 border-t border-line/50 mt-2">
                 <a
                   href={siteConfig.resumePath}
                   download
-                  className="inline-flex rounded-md border border-line px-4 py-2.5 text-sm font-medium"
+                  className="inline-flex w-full justify-center rounded-full border border-accent/40 bg-accent/10 py-2.5 text-xs font-semibold text-accent"
                 >
-                  Resume
+                  Download Resume
                 </a>
               </li>
             </ul>

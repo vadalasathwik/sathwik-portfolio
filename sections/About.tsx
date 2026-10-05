@@ -1,47 +1,43 @@
+import { FiCpu, FiDatabase, FiLayers, FiZap } from "react-icons/fi";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
-import { layers } from "@/lib/data";
+import { aboutCards } from "@/lib/data";
+
+const iconMap = {
+  cpu: FiCpu,
+  layers: FiLayers,
+  zap: FiZap,
+  database: FiDatabase,
+};
 
 export function About() {
   return (
-    <Section id="about" title="Building products, not just features.">
-      <Reveal className="max-w-2xl space-y-5 text-lg leading-relaxed text-muted">
-        <p>
-          I&apos;m Sathwik Vadala, a Full-Stack AI Developer based in Hyderabad, India. I build
-          AI-powered products that combine modern web applications with intelligent automation.
-        </p>
-        <p>
-          My primary stack includes Python, FastAPI, React, Next.js, TypeScript, PostgreSQL, and
-          AI/LLM technologies.
-        </p>
-        <p>
-          I enjoy taking ideas from product concept and architecture through development, AI
-          integration, database design, and deployment.
-        </p>
-        <p>
-          I&apos;m particularly interested in AI products, intelligent automation, developer tools,
-          and AI-powered SaaS applications.
-        </p>
-      </Reveal>
-
-      <Reveal className="mt-14" delay={0.1}>
-        <p className="mb-4 text-sm text-muted">The layers I work across</p>
-        <dl className="border-y border-line">
-          {layers.map((l) => (
-            <div
-              key={l.name}
-              className="grid gap-2 border-b border-line py-4 last:border-b-0 sm:grid-cols-[9rem_1fr] sm:items-center"
-            >
-              <dt className="font-display text-lg font-medium">{l.name}</dt>
-              <dd className="flex flex-wrap gap-x-5 gap-y-1 text-muted">
-                {l.tech.map((t) => (
-                  <span key={t}>{t}</span>
-                ))}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </Reveal>
+    <Section
+      id="about"
+      title="Building products, not just features."
+      intro="I build AI-powered full-stack applications that combine modern web interfaces, backend systems, structured data, and practical AI capabilities."
+    >
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {aboutCards.map((card, i) => {
+          const Icon = iconMap[card.iconName as keyof typeof iconMap] || FiCpu;
+          return (
+            <Reveal key={card.title} delay={i * 0.08}>
+              <article className="group h-full rounded-2xl border border-line/60 bg-surface/40 p-5 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:bg-surface/70">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-accent/30 bg-accent/10 text-accent transition-transform group-hover:scale-105">
+                  <Icon className="h-4 w-4" />
+                </div>
+                <h3 className="mt-3.5 font-mono text-xs font-bold text-fg tracking-wider uppercase">
+                  {card.title}
+                </h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-muted">
+                  {card.description}
+                </p>
+              </article>
+            </Reveal>
+          );
+        })}
+      </div>
     </Section>
   );
 }
+

@@ -13,15 +13,15 @@ export const siteConfig = {
   name: "Sathwik Vadala",
   role: "AI Product Engineer / Full-Stack AI Developer",
   location: "Hyderabad, India",
-  title: "Sathwik Vadala — AI Product Engineer | Full-Stack AI Developer",
+  title: "Sathwik Vadala — AI Product Engineer",
   description:
-    "Sathwik Vadala is a Full-Stack AI Developer and AI Product Engineer building intelligent products with Python, FastAPI, React, Next.js and modern AI technologies.",
-  // Set NEXT_PUBLIC_SITE_URL in production.
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://sathwikvadala.dev",
-  // Put your PDF at public/resume.pdf.
+    "AI Product Engineer and Full-Stack Software Engineer building AI-powered applications with Python, FastAPI, React, Next.js, PostgreSQL and modern Generative AI technologies.",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://sathwik-portfolio-xi.vercel.app",
   resumePath: "/resume.pdf",
   githubUsername: "vadalasathwik",
   email,
+  linkedin,
+  github,
   socials: [
     { key: "github", label: "GitHub", href: github },
     { key: "linkedin", label: "LinkedIn", href: linkedin },
@@ -31,13 +31,13 @@ export const siteConfig = {
 
 export const navLinks = [
   { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
+  { href: "#capabilities", label: "Capabilities" },
+  { href: "#stack", label: "Stack" },
   { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },
 ] as const;
 
 export function getSocial(key: SocialKey): Social {
   return siteConfig.socials.find((s) => s.key === key) as Social;
 }
-

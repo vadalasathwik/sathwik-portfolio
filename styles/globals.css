@@ -42,3 +42,29 @@
     @apply bg-surface/70 backdrop-blur-md border border-line/80 shadow-lg transition-all duration-300 hover:border-accent/40 hover:shadow-accent/5;
   }
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-33.333333%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-33.333333%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--marquee-speed, 25s) linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse var(--marquee-speed, 25s) linear infinite;
+}
