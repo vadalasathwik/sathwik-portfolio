@@ -23,7 +23,7 @@ export function Navbar() {
       (entries) => {
         entries.forEach((e) => e.isIntersecting && setActive(e.target.id));
       },
-      { rootMargin: "-45% 0px -50% 0px" }
+      { rootMargin: "-35% 0px -45% 0px" }
     );
     ids.forEach((id) => {
       const el = document.getElementById(id);
@@ -48,26 +48,32 @@ export function Navbar() {
       }`}
     >
       <nav aria-label="Primary" className="container-page flex h-14 sm:h-16 items-center justify-between transition-all duration-300">
-        <a href="#top" className="group flex items-center gap-2.5">
+        <a href="#top" className="group flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-accent group-hover:scale-125 transition-transform" />
           <span className="font-display text-base sm:text-lg font-bold tracking-tight text-fg transition-colors group-hover:text-accent">
             {siteConfig.name}
           </span>
         </a>
 
-        <ul className="hidden items-center gap-6 lg:gap-8 md:flex">
-          {navLinks.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                aria-current={active === l.href.slice(1) ? "true" : undefined}
-                className={`text-xs sm:text-sm font-medium transition-colors hover:text-fg ${
-                  active === l.href.slice(1) ? "text-accent font-semibold" : "text-muted"
-                }`}
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
+        <ul className="hidden items-center gap-1.5 lg:gap-2 md:flex">
+          {navLinks.map((l) => {
+            const isCurrent = active === l.href.slice(1);
+            return (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  aria-current={isCurrent ? "true" : undefined}
+                  className={`text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full border transition-all duration-200 ${
+                    isCurrent
+                      ? "border-accent/40 bg-accent/10 text-accent font-semibold shadow-sm"
+                      : "border-transparent text-muted hover:text-fg hover:bg-surface/60"
+                  }`}
+                >
+                  {l.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="flex items-center gap-3">

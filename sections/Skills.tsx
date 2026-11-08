@@ -10,18 +10,21 @@ export function Skills() {
   return (
     <Section
       id="stack"
-      title="Tools I build with"
+      eyebrow="02 // TOOLING & TECHNOLOGIES"
+      title="Tools & Ecosystem I Build With"
+      intro="Modern tech stack, production frameworks, and AI developer tooling leveraged across frontend, backend, and cloud environments."
+      layout="stacked"
     >
-      <div className="relative space-y-4 overflow-hidden rounded-2xl border border-line/70 bg-surface/30 p-6 backdrop-blur-md">
+      <div className="relative space-y-4 overflow-hidden rounded-3xl border border-line/70 bg-surface/30 p-6 sm:p-8 backdrop-blur-md">
         {/* Edge Fade Masks */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-20 w-16 sm:w-28 bg-gradient-to-r from-ink to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-20 w-16 sm:w-28 bg-gradient-to-l from-ink to-transparent" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-20 w-16 sm:w-32 bg-gradient-to-r from-ink to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-20 w-16 sm:w-32 bg-gradient-to-l from-ink to-transparent" />
 
         {allMarqueeRows.map((row) => {
           return (
             <div
               key={row.id}
-              className="group relative flex overflow-hidden py-1"
+              className="group relative flex overflow-hidden py-1.5"
             >
               {reduceMotion ? (
                 /* Static Grid for Reduced Motion */
@@ -31,7 +34,7 @@ export function Skills() {
                     return (
                       <div
                         key={item.name}
-                        className="flex items-center gap-2.5 rounded-xl border border-line/80 bg-surface/90 px-4 py-2 text-xs font-semibold text-fg"
+                        className="flex items-center gap-2.5 rounded-xl border border-line/80 bg-surface/90 px-4 py-2.5 text-xs font-semibold text-fg"
                       >
                         <Icon className="h-4 w-4 text-accent" />
                         <span>{item.name}</span>
@@ -54,7 +57,7 @@ export function Skills() {
                         <div
                           key={`${item.name}-${i}`}
                           tabIndex={0}
-                          className="flex shrink-0 items-center gap-2.5 rounded-xl border border-line/80 bg-surface/90 px-4 py-2.5 text-xs sm:text-sm font-semibold text-fg shadow-sm transition-all duration-200 hover:border-accent/60 hover:bg-raised hover:scale-105 focus:border-accent"
+                          className="flex shrink-0 items-center gap-2.5 rounded-xl border border-line/80 bg-surface/80 px-4 py-2.5 text-xs sm:text-sm font-semibold text-fg shadow-sm transition-all duration-200 hover:border-accent/60 hover:bg-raised hover:scale-105 hover:text-accent focus:border-accent"
                         >
                           <Icon className="h-4 w-4 text-accent" />
                           <span>{item.name}</span>

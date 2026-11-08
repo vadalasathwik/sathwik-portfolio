@@ -3,19 +3,29 @@ import { Reveal } from "./Reveal";
 
 type Props = {
   id: string;
+  eyebrow?: string;
   title: string;
   intro?: string;
   layout?: "split" | "stacked";
+  className?: string;
   children: ReactNode;
 };
 
-export function Section({ id, title, intro, layout = "split", children }: Props) {
+export function Section({
+  id,
+  eyebrow,
+  title,
+  intro,
+  layout = "split",
+  className = "",
+  children,
+}: Props) {
   const stacked = layout === "stacked";
   return (
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className="scroll-mt-16 border-t border-line py-20 md:py-28"
+      className={`scroll-mt-16 border-t border-line/60 py-20 md:py-28 ${className}`}
     >
       <div
         className={
@@ -28,14 +38,21 @@ export function Section({ id, title, intro, layout = "split", children }: Props)
           }
         >
           <Reveal>
+            {eyebrow && (
+              <span className="font-mono text-xs font-bold text-accent tracking-widest uppercase mb-2 block">
+                {eyebrow}
+              </span>
+            )}
             <h2
               id={`${id}-title`}
-              className="font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl"
+              className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-fg leading-[1.12]"
             >
               {title}
             </h2>
             {intro ? (
-              <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">{intro}</p>
+              <p className="mt-4 max-w-xl text-base sm:text-lg leading-relaxed text-muted">
+                {intro}
+              </p>
             ) : null}
           </Reveal>
         </div>

@@ -13,7 +13,7 @@ export function SocialLinks({ className = "" }: { className?: string }) {
           <li key={s.key}>
             <a
               href={s.href}
-              className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-fg"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm text-muted transition-colors hover:text-accent font-medium"
               {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             >
               <Icon aria-hidden className="h-4 w-4" />
