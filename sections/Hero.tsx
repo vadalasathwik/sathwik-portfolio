@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { FiDownload, FiMail, FiLinkedin, FiGithub, FiArrowUpRight, FiZap, FiCpu } from "react-icons/fi";
+import { FiMail, FiLinkedin, FiGithub, FiArrowUpRight, FiZap } from "react-icons/fi";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { siteConfig } from "@/lib/config";
 
@@ -83,10 +83,6 @@ export function Hero() {
             className="pt-2 flex flex-wrap items-center gap-3"
           >
             <ButtonLink href="#projects">View Projects</ButtonLink>
-            <ButtonLink href={siteConfig.resumePath} variant="secondary" download>
-              <FiDownload aria-hidden className="h-4 w-4" />
-              Download Resume
-            </ButtonLink>
           </motion.div>
 
           {/* Below Buttons: Social Links */}

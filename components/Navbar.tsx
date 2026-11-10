@@ -76,17 +76,10 @@ export function Navbar() {
           })}
         </ul>
 
-        <div className="flex items-center gap-3">
-          <a
-            href={siteConfig.resumePath}
-            download
-            className="hidden rounded-full border border-line/80 bg-surface/60 px-4 py-1.5 text-xs font-semibold text-fg transition-all hover:border-accent/50 hover:bg-raised hover:text-accent md:inline-flex"
-          >
-            Resume
-          </a>
+        <div className="flex items-center md:hidden">
           <button
             type="button"
-            className="inline-flex items-center gap-1.5 rounded-full border border-line/80 bg-surface/70 px-3 py-1.5 text-xs font-semibold text-fg hover:border-accent/50 md:hidden"
+            className="inline-flex items-center gap-1.5 rounded-full border border-line/80 bg-surface/70 px-3 py-1.5 text-xs font-semibold text-fg hover:border-accent/50"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -120,15 +113,6 @@ export function Navbar() {
                   </a>
                 </li>
               ))}
-              <li className="pt-3 border-t border-line/50 mt-2">
-                <a
-                  href={siteConfig.resumePath}
-                  download
-                  className="inline-flex w-full justify-center rounded-full border border-accent/40 bg-accent/10 py-2.5 text-xs font-semibold text-accent"
-                >
-                  Download Resume
-                </a>
-              </li>
             </ul>
           </motion.div>
         ) : null}
